@@ -258,6 +258,7 @@
               <goal>jar</goal>
             </goals>
             <configuration>
+              <classifier>bsk</classifier>
               <archive>
                 <manifest>
                   <addClasspath>true</addClasspath>

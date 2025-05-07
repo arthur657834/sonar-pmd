@@ -132,9 +132,7 @@
     <dependency>
       <groupId>com.xenoamess.p3c</groupId>
       <artifactId>p3c-pmd</artifactId>
-      <version>2.2.4.0x-SNAPSHOT</version>
-      <scope>system</scope>
-      <systemPath>${project.basedir}/lib/p3c-pmd-2.2.4.0x-SNAPSHOT.jar</systemPath>
+      <version>0.0.1</version>
     </dependency>
 
     <dependency>
@@ -215,60 +213,6 @@
                   </files>
                 </requireFilesSize>
               </rules>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <compilerArguments>
-            <extdirs>${project.basedir}/lib</extdirs>
-          </compilerArguments>
-        </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>copy-dependencies</id>
-            <phase>package</phase>
-            <goals>
-              <goal>copy-dependencies</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>
-                ${project.build.directory}/lib
-              </outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>p3c-pmd</id>
-            <phase>package</phase>
-            <goals>
-              <goal>jar</goal>
-            </goals>
-            <configuration>
-              <classifier>bsk</classifier>
-              <archive>
-                <manifest>
-                  <addClasspath>true</addClasspath>
-                  <classpathPrefix>lib</classpathPrefix>
-                  <mainClass>org.sonar.plugins.pmd.PmdPlugin</mainClass>
-                </manifest>
-                <manifestEntries>
-                  <Class-Path>lib/p3c-pmd-2.2.4.0x-SNAPSHOT.jar</Class-Path>
-                </manifestEntries>
-              </archive>
             </configuration>
           </execution>
         </executions>

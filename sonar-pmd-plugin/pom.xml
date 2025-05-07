@@ -252,6 +252,7 @@
         <artifactId>maven-jar-plugin</artifactId>
         <executions>
           <execution>
+            <id>p3c-pmd</id>
             <phase>package</phase>
             <goals>
               <goal>jar</goal>

@@ -129,7 +129,7 @@
     </dependency>
 
     <dependency>
-      <groupId>com.alibaba.p3c</groupId>
+      <groupId>com.xenoamess.p3c</groupId>
       <artifactId>p3c-pmd</artifactId>
       <version>2.2.4.0x-SNAPSHOT</version>
       <scope>system</scope>

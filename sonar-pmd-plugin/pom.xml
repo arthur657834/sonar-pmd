@@ -132,8 +132,8 @@
       <groupId>com.xenoamess.p3c</groupId>
       <artifactId>p3c-pmd</artifactId>
       <version>2.2.4.0x-SNAPSHOT</version>
-<!--      <scope>system</scope>-->
-<!--      <systemPath>${project.basedir}/src/main/resources/lib/p3c-pmd-2.2.4.0x-SNAPSHOT.jar</systemPath>-->
+      <scope>system</scope>
+      <systemPath>${project.basedir}/src/main/resources/lib/p3c-pmd-2.2.4.0x-SNAPSHOT.jar</systemPath>
     </dependency>
 
     <dependency>

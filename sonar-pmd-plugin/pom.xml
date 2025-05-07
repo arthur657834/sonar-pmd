@@ -18,6 +18,7 @@
 
   <properties>
     <maven.test.redirectTestOutputToFile>true</maven.test.redirectTestOutputToFile>
+    <base.lib.path>${project.basedir}/src/main/resources/lib</base.lib.path>
   </properties>
 
   <developers>
@@ -132,8 +133,8 @@
       <groupId>com.xenoamess.p3c</groupId>
       <artifactId>p3c-pmd</artifactId>
       <version>2.2.4.0x-SNAPSHOT</version>
-<!--      <scope>system</scope>-->
-<!--      <systemPath>${project.basedir}/src/main/resources/lib/p3c-pmd-2.2.4.0x-SNAPSHOT.jar</systemPath>-->
+      <scope>system</scope>
+      <systemPath>${base.lib.path}/p3c-pmd-2.2.4.0x-SNAPSHOT.jar</systemPath>
     </dependency>
 
     <dependency>
@@ -218,26 +219,50 @@
           </execution>
         </executions>
       </plugin>
-<!--      <plugin>-->
-<!--        <groupId>org.apache.maven.plugins</groupId>-->
-<!--        <artifactId>maven-dependency-plugin</artifactId>-->
-<!--        <version>3.8.1</version>-->
-<!--        <executions>-->
-<!--          <execution>-->
-<!--            <id>copy-dependencies</id>-->
-<!--            <phase>package</phase>-->
-<!--            <goals>-->
-<!--              <goal>copy-dependencies</goal>-->
-<!--            </goals>-->
-<!--            <configuration>-->
-<!--              &lt;!&ndash;指定打包出来的jar包目录 &ndash;&gt;-->
-<!--              <outputDirectory>${project.build.directory}/${project.build.finalName}/META-INF/lib</outputDirectory>-->
-<!--              &lt;!&ndash;这里指定包含 system scope &ndash;&gt;-->
-<!--              <includeScope>system</includeScope>-->
-<!--            </configuration>-->
-<!--          </execution>-->
-<!--        </executions>-->
-<!--      </plugin>-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.8.1</version>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <!--指定打包出来的jar包目录 -->
+              <outputDirectory>${base.lib.path}</outputDirectory>
+              <!--这里指定包含 system scope -->
+              <includeScope>system</includeScope>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!-- 打jar包的main方法配置 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <classpathPrefix>lib/</classpathPrefix>
+            </manifest>
+            <!-- 给清单文件添加键值对(配置文件外置) -->
+            <manifestEntries>
+              <Class-Path>config/ lib/p3c-pmd-2.2.4.0x-SNAPSHOT.jar</Class-Path>
+            </manifestEntries>
+          </archive>
+          <!--打包的时候忽略classes 路径下的配置文件 -->
+          <excludes>
+            <exclude>*.properties</exclude>
+            <exclude>*.xml</exclude>
+            <exclude>*.txt</exclude>
+            <exclude>templates/**</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>

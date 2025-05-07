@@ -461,6 +461,30 @@
               </gpgArguments>
             </configuration>
           </plugin>
+          <!-- 打jar包的main方法配置 -->
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <configuration>
+              <archive>
+                <manifest>
+                  <addClasspath>true</addClasspath>
+                  <classpathPrefix>lib/</classpathPrefix>
+                </manifest>
+                <!-- 给清单文件添加键值对(配置文件外置) -->
+                <manifestEntries>
+                  <Class-Path>lib/p3c-pmd-2.2.4.0x-SNAPSHOT.jar</Class-Path>
+                </manifestEntries>
+              </archive>
+              <!--打包的时候忽略classes 路径下的配置文件 -->
+              <excludes>
+                <exclude>*.properties</exclude>
+                <exclude>*.xml</exclude>
+                <exclude>*.txt</exclude>
+                <exclude>templates/**</exclude>
+              </excludes>
+            </configuration>
+          </plugin>
         </plugins>
       </build>
     </profile>

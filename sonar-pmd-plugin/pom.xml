@@ -233,8 +233,7 @@
             <configuration>
               <!--指定打包出来的jar包目录 -->
               <outputDirectory>${base.lib.path}</outputDirectory>
-              <!--这里指定包含 system scope -->
-              <includeScope>system</includeScope>
+              <outputDirectory>${project.build.directory}/lib</outputDirectory>
             </configuration>
           </execution>
         </executions>

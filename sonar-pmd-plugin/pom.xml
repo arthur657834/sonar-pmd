@@ -133,7 +133,7 @@
       <artifactId>p3c-pmd</artifactId>
       <version>2.2.4.0x-SNAPSHOT</version>
       <scope>system</scope>
-      <systemPath>${project.basedir}/lib/p3c-pmd-2.2.4.0x-SNAPSHOT.jar</systemPath>
+      <systemPath>${project.basedir}/src/main/resources/lib/p3c-pmd-2.2.4.0x-SNAPSHOT.jar</systemPath>
     </dependency>
 
     <dependency>

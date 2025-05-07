@@ -231,7 +231,7 @@
             </goals>
             <configuration>
               <!--指定打包出来的jar包目录 -->
-              <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/lib</outputDirectory>
+              <outputDirectory>${project.build.directory}/${project.build.finalName}/META-INF/lib</outputDirectory>
               <!--这里指定包含 system scope -->
               <includeScope>system</includeScope>
             </configuration>
